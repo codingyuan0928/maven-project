@@ -10,7 +10,7 @@ pipeline {
             }
             post {
                 success {
-                    echo '開始存檔....'
+                    echo 'Now Arching....'
                     archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
