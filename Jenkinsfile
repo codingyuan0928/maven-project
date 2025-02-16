@@ -31,17 +31,17 @@ pipeline {
             parallel{
                 stage('Deploy to Staging'){
                     steps{
-                        sh '''
-                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@${params.tomcat_dev}:/usr/share/tomcat9/webapps
-                        '''
+                        sh """
+                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@\"$params.tomcat_dev\":/usr/share/tomcat9/webapps
+                        """
                     }
                 }
 
                 stage('Deploy to Production'){
                     steps{
-                        sh '''
-                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@${params.tomcat_prod}:/usr/share/tomcat9/webapps
-                        '''
+                        sh """
+                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@\"$params.tomcat_prod\":/usr/share/tomcat9/webapps
+                        """
                     }
                 }
             }
