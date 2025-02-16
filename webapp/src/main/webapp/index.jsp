@@ -1,1 +1,1 @@
-Hello, Welcome to this course! Pipeline as code Section.
+Hello, Welcome to this course! Pipeline as code Section for AWS.
