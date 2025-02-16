@@ -32,7 +32,7 @@ pipeline {
                 stage('Deploy to Staging'){
                     steps{
                         sh """
-                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@\"$params.tomcat_dev\":/usr/share/tomcat9/webapps
+                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@54.252.28.8:/usr/share/tomcat9/webapps
                         """
                     }
                 }
@@ -40,7 +40,7 @@ pipeline {
                 stage('Deploy to Production'){
                     steps{
                         sh """
-                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@\"$params.tomcat_prod\":/usr/share/tomcat9/webapps
+                        scp -i "C:/Users/godkn/tomcat-demo.pem" "${WORKSPACE}/webapp/target/webapp.war" ec2-user@54.252.28.8:/usr/share/tomcat9/webapps
                         """
                     }
                 }
