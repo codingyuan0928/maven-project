@@ -5,6 +5,10 @@ pipeline {
         maven 'local maven'
     }
 
+    environment {
+        WORKSPACE_PATH = "${WORKSPACE}"
+    }
+
     parameters{
         string(name: 'tomcat_dev', defaultValue: '54.252.28.8', description: 'Staging Server')
         string(name: 'tomcat_prod', defaultValue: '13.238.184.22', description: 'Production Server')
@@ -31,13 +35,13 @@ pipeline {
             parallel{
                 stage('Deploy to Staging'){
                     steps{
-                        sh "scp -i C:/Users/godkn/tomcat-demo.pem ${WORKSPACE}/webapp/target/webapp.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
+                        sh "scp -i C:/Users/godkn/tomcat-demo.pem "${env.WORKSPACE_PATH}\\webapp\\target\\webapp.war" ec2-user@${params.tomcat_dev}:/var/lib/tomcat9/webapps"
                     }
                 }
 
                 stage('Deploy to Production'){
                     steps{
-                        sh "scp -i C:/Users/godkn/tomcat-demo.pem ${WORKSPACE}/webapp/target/webapp.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
+                        sh "scp -i C:/Users/godkn/tomcat-demo.pem "${env.WORKSPACE_PATH}\\webapp\\target\\webapp.war" ec2-user@${params.tomcat_prod}:/var/lib/tomcat9/webapps"
                     }
                 }
             }
