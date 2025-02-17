@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        WORKSPACE_PATH = "${WORKSPACE}"
+        WORKSPACE_PATH = "C:\ProgramData\Jenkins\.jenkins\workspace\FullyAutomated"
     }
 
     parameters{
